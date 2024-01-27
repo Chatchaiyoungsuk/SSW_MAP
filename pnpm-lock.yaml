@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@next/font':
+    specifier: ^14.1.0
+    version: 14.1.0(next@14.1.0)
   lucide-react:
     specifier: ^0.316.0
     version: 0.316.0(react@18.2.0)
@@ -216,6 +219,14 @@ packages:
     dependencies:
       glob: 10.3.10
     dev: true
+
+  /@next/font@14.1.0(next@14.1.0):
+    resolution: {integrity: sha512-9hJ7bEYDI7UGQ1a++5zRD3F2VUu9NIaK5Hro/uL9bvFFs6b0Cy1OdLtLQHCIQE7sSMt8Rbu4VtcbnlubsseelA==}
+    peerDependencies:
+      next: '*'
+    dependencies:
+      next: 14.1.0(react-dom@18.2.0)(react@18.2.0)
+    dev: false
 
   /@next/swc-darwin-arm64@14.1.0:
     resolution: {integrity: sha512-nUDn7TOGcIeyQni6lZHfzNoo9S0euXnu0jhsbMOmMJUBfgsnESdjN97kM7cBqQxZa8L/bM9om/S5/1dzCrW6wQ==}

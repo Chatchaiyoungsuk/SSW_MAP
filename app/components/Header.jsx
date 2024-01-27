@@ -1,6 +1,7 @@
 "use client"
 
-import { User } from 'lucide-react'
+import Link from 'next/link'
+import { User , MapPinned } from 'lucide-react'
 import { useEffect, useState } from "react"
 
 export default function Header(props) {
@@ -14,7 +15,7 @@ export default function Header(props) {
 
     const [ search , setSearch ] = useState("")
     
-    let filteredItems = []
+    const [ filteredItems , setFilteredItems ] = useState([])
 
     const [adresses] = useState([
         {
@@ -54,35 +55,49 @@ export default function Header(props) {
         },
     ])
 
-    if(search != ""){
-        filteredItems = adresses.filter((user) => user.name.toLowerCase().includes(search.toLowerCase()));
-    }
-    else{
-        filteredItems = []
-    }
+    useEffect(()=>{
+        setFilteredItems([])
+    },[])
+
+    useEffect(()=>{
+        if(search != ""){
+            setFilteredItems(adresses.filter((user) => user.name.toLowerCase().includes(search.toLowerCase())))
+        }
+        else{
+            setFilteredItems([])
+        }
+    },[search])
+
+
     
     return (
         <>
-            <div className="flex items-center justify-between px-4">
-                <h1 className="bg-gradient-to-r from-green-500 inline-block p-4 to-yellow-600 bg-clip-text text-transparent font-bold text-3xl">SSW Map</h1>
-                <div className="relative">
-                    <input type="text"
-                        value={search}
-                        onChange={(e) => {setSearch(e.target.value)}}
-                        placeholder="Search..."
-                        className="outline-none p-2 rounded-md bg-zinc-800 text-white focus:outline focus:outline-green-500" />
-                    {filteredItems.length > 0 && (
-                        <div className="z-50 block absolute mt-4 bg-zinc-800 min-w-[250px] right-0 py-2 text-white rounded-lg">
-                            {filteredItems.map((data,i) => (
-                            <button key={i} onClick={()=>setPosition(data.lng,data.lat)} className="block w-full text-start mt-2 hover:bg-zinc-600 p-2 px-4 rounded-lg">
-                            {data.name}
-                            </button>
-                            ))} 
+            <div className='z-50 w-full sticky top-0'>
+                <div className="flex items-center justify-between p-4 bg-zinc-950/50 backdrop-blur-lg shadow-md shadow-green-400/50">
+                    <Link href={"/"} >
+                        <h1><MapPinned color='#fff' size={"1.5em"} /></h1>
+                    </Link>
+                    <div className='flex items-center'>
+                        <div className="relative">
+                            <input type="text"
+                                value={search}
+                                onChange={(e) => {setSearch(e.target.value)}}
+                                placeholder="ค้นหา"
+                                className="max-w-full outline-none p-2 rounded-md bg-zinc-800 font-bold text-white focus:outline focus:outline-green-500" 
+                            />
+                            {filteredItems.length > 0 && (
+                                <div className="z-[99999999999999] block absolute mt-4 bg-zinc-800 min-w-[250px] right-0 p-2 text-white rounded-lg">
+                                    {filteredItems.map((data,i) => (
+                                    <button key={i} onClick={()=>setPosition(data.lng,data.lat)} className="block w-full text-start mt-2 hover:bg-zinc-600 p-2 px-4 rounded-lg">
+                                    {data.name}
+                                    </button>
+                                    ))} 
+                                </div>
+                            )}
+                        
                         </div>
-                    )}
-
-                    <button><User className='text-white p-1 ml-1 block bg-zinc-800 rounded-md' /></button>
-
+                        <Link href={"/dashboard"} className='text-white block bg-zinc-800 rounded-md p-2 ml-2 outline-none focus:outline-green-500'><User /></Link>
+                    </div>
                 </div>
             </div>
         </>
