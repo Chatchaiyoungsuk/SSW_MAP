@@ -3,12 +3,13 @@
 import Link from 'next/link'
 import { User , MapPinned } from 'lucide-react'
 import { useEffect, useState } from "react"
+import { Marker } from '../map/page'
 
 export default function Header(props) {
 
     const { setlng , setlat } = props
 
-    function setPosition(lng,lat){
+ function setPosition(lng,lat){
         setlng(lng)
         setlat(lat)
     }
@@ -69,14 +70,14 @@ export default function Header(props) {
     },[search])
 
 
-    
-    return (
+    return (       
         <>
             <div className='z-50 w-full sticky top-0'>
                 <div className="flex items-center justify-between p-4 bg-zinc-950/50 backdrop-blur-lg shadow-md shadow-green-400/50">
                     <Link href={"/"} >
                         <h1><MapPinned color='#fff' size={"1.5em"} /></h1>
                     </Link>
+{/* ต้องมาแกะโค้ดไอปักษ์เพื่อทำMarker */}
                     <div className='flex items-center'>
                         <div className="relative">
                             <input type="text"
@@ -88,13 +89,13 @@ export default function Header(props) {
                             {filteredItems.length > 0 && (
                                 <div className="z-[99999999999999] block absolute mt-4 bg-zinc-800 min-w-[250px] right-0 p-2 text-white rounded-lg">
                                     {filteredItems.map((data,i) => (
-                                    <button key={i} onClick={()=>setPosition(data.lng,data.lat)} className="block w-full text-start mt-2 hover:bg-zinc-600 p-2 px-4 rounded-lg">
+                                    <button key={i} onClick={()=>{Marker,setPosition(data.lng,data.lat)}} className="block w-full text-start mt-2 hover:bg-zinc-600 p-2 px-4 rounded-lg">
                                     {data.name}
                                     </button>
                                     ))} 
                                 </div>
                             )}
-                        
+{/* ///////// */}
                         </div>
                         <Link href={"/dashboard"} className='text-white block bg-zinc-800 rounded-md p-2 ml-2 outline-none focus:outline-green-500'><User /></Link>
                     </div>

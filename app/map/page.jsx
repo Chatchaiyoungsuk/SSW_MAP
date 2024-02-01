@@ -8,6 +8,7 @@ import maplibregl from 'maplibre-gl';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import Header from "../components/Header";
+import { Map } from 'lucide-react';
 
 export default function Home() {
 
@@ -28,9 +29,9 @@ export default function Home() {
         pitch: 60,
         antialias: true
     });
-
+// icon นะจ้ะ
     Map.on('load',(() => {
-      Map.loadImage('https://cdn.discordapp.com/attachments/1087745142951256134/1200480436271452311/Pngtreelocation_pin_icon_3566845.png?ex=65c65587&is=65b3e087&hm=5ca98a14c548d21a156ee586f3e4ef83de190f2d38c0bc27dbfbc68747cde621&',(error,image) => {
+      Map.loadImage('https://cdn.discordapp.com/attachments/1087745142951256134/1200722420571578368/1.png?ex=65c736e5&is=65b4c1e5&hm=a04258acb0756c1479f4c75a2ac58a08d92bf0c42165a42c101ed0087b860fe0&',(error,image) => {
         if (error){
           console.log(error);
         }
@@ -45,7 +46,7 @@ export default function Home() {
                       'type': 'Feature',
                       'geometry': {
                           'type': 'Point',
-                          'coordinates': [lng, lat]
+                          'coordinates': [99.0852798, 9.9485982]
                       }
                   }
               ]
@@ -58,12 +59,13 @@ export default function Home() {
         'source': 'point',
         'layout': {
             'icon-image': 'cat',
-            'icon-size': 0.1
+            'icon-size': 0.3,
         }
     });
       })
     }))
 
+// model นะจ้ะ
     const modelOrigin = [148.9819, -35.39847];
         const modelAltitude = 0;
         const modelRotate = [Math.PI / 2, 0, 0];
@@ -160,9 +162,6 @@ export default function Home() {
             Map.addLayer(customLayer);
         });
 
-
-    
-  
   }, [API_KEY, lng, lat, zoom]);
 
   return (
@@ -173,6 +172,15 @@ export default function Home() {
           <div ref={mapContainer} className="map" />
         </div>
       </div>
-    </> 
+    </>
   );
 }
+
+export function Marker(props) {
+    const marker = new maplibregl.Marker();
+    Map.on('load',(() => {
+        marker.setLngLat([lng, lat]);
+        Map.addLayer(customLayer);
+}));
+}
+console.log(Marker);
