@@ -37,7 +37,7 @@ export default function Home() {
             
             //handle err
             if (error){
-            console.log(error);
+                console.log(error);
             }
 
             //set logo ssw
@@ -65,7 +65,7 @@ export default function Home() {
                 'type': 'symbol',
                 'source': 'point',
                 'layout': {
-                    'icon-image': 'cat',
+                    'icon-image': 'ssw',
                     'icon-size': 0.3,
                 }
             });
