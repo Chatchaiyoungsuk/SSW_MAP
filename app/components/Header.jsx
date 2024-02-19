@@ -3,14 +3,17 @@
 import Link from 'next/link'
 import { User , MapPinned } from 'lucide-react'
 import { useEffect, useState } from "react"
+import { LngLat } from 'maplibre-gl'
 
 export default function Header(props) {
 
-    const { setlng , setlat } = props
+    const { setlng , setlat , setMakerLat , setMakerLng } = props
 
  function setPosition(lng,lat){
         setlng(lng)
         setlat(lat)
+        setMakerLat(lat)
+        setMakerLng(lng)
     }
 
     const [ search , setSearch ] = useState("")

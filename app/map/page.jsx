@@ -19,9 +19,13 @@ export default function Home() {
   const [zoom] = useState(20);
   const [API_KEY] = useState('0OwvauUkDP7wGwh11RM9');
 
-  useEffect(() => {
+  const [makerLng , setMakerLng] = useState(0)
+  const [makerLat , setMakerLat] = useState(0)
+
   
-    let Map = new maplibregl.Map({
+  useEffect(() => {
+      
+      let Map = new maplibregl.Map({
         container: mapContainer.current,
         style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${API_KEY}`,
         zoom: zoom,
@@ -160,14 +164,19 @@ export default function Home() {
 
         Map.on('load', () => {
             Map.addLayer(customLayer);
+            if(makerLng && makerLat){
+                let Marker = new maplibregl.Marker().setLngLat([makerLng,makerLat]).addTo(Map)
+            }
         });
 
-  }, [API_KEY, lng, lat, zoom]);
+  }, [API_KEY, lng, lat, zoom, makerLng , makerLat]);
 
+
+ 
   return (
     <>
       <div className="bg-zinc-950">
-        <Header setlng={setlng} setlat={setlat} />
+        <Header setlng={setlng} setlat={setlat} setMakerLat={setMakerLat} setMakerLng={setMakerLng} />
         <div className="map-wrap">
           <div ref={mapContainer} className="map" />
         </div>
