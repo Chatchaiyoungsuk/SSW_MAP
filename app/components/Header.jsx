@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { User , MapPinned } from 'lucide-react'
 import { useEffect, useState } from "react"
-import { Marker } from '../map/page'
 
 export default function Header(props) {
 
@@ -89,7 +88,7 @@ export default function Header(props) {
                             {filteredItems.length > 0 && (
                                 <div className="z-[99999999999999] block absolute mt-4 bg-zinc-800 min-w-[250px] right-0 p-2 text-white rounded-lg">
                                     {filteredItems.map((data,i) => (
-                                    <button key={i} onClick={()=>{Marker,setPosition(data.lng,data.lat)}} className="block w-full text-start mt-2 hover:bg-zinc-600 p-2 px-4 rounded-lg">
+                                    <button key={i} onClick={()=>{setPosition(data.lng,data.lat)}} className="block w-full text-start mt-2 hover:bg-zinc-600 p-2 px-4 rounded-lg">
                                     {data.name}
                                     </button>
                                     ))} 

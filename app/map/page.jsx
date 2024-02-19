@@ -175,12 +175,3 @@ export default function Home() {
     </>
   );
 }
-
-export function Marker(props) {
-    const marker = new maplibregl.Marker();
-    Map.on('load',(() => {
-        marker.setLngLat([lng, lat]);
-        Map.addLayer(customLayer);
-}));
-}
-console.log(Marker);
