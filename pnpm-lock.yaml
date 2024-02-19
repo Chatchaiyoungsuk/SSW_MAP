@@ -8,6 +8,9 @@ dependencies:
   '@next/font':
     specifier: ^14.1.0
     version: 14.1.0(next@14.1.0)
+  '@prisma/client':
+    specifier: ^5.9.1
+    version: 5.9.1(prisma@5.9.1)
   lucide-react:
     specifier: ^0.316.0
     version: 0.316.0(react@18.2.0)
@@ -339,6 +342,19 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@prisma/client@5.9.1(prisma@5.9.1):
+    resolution: {integrity: sha512-caSOnG4kxcSkhqC/2ShV7rEoWwd3XrftokxJqOCMVvia4NYV/TPtJlS9C2os3Igxw/Qyxumj9GBQzcStzECvtQ==}
+    engines: {node: '>=16.13'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      prisma: 5.9.1
+    dev: false
 
   /@prisma/debug@5.9.1:
     resolution: {integrity: sha512-yAHFSFCg8KVoL0oRUno3m60GAjsUKYUDkQ+9BA2X2JfVR3kRVSJFc/GpQ2fSORi4pSHZR9orfM4UC9OVXIFFTA==}

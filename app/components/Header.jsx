@@ -1,5 +1,6 @@
 "use client"
 
+import { GetSites } from '../action/action'
 import Link from 'next/link'
 import { User , MapPinned } from 'lucide-react'
 import { useEffect, useState } from "react"
@@ -9,57 +10,25 @@ export default function Header(props) {
 
     const { setlng , setlat , setMakerLat , setMakerLng } = props
 
- function setPosition(lng,lat){
+    function setPosition(lng,lat){
         setlng(lng)
         setlat(lat)
         setMakerLat(lat)
         setMakerLng(lng)
     }
 
+    const [ adresses , setAdresses ] = useState([])
     const [ search , setSearch ] = useState("")
-    
     const [ filteredItems , setFilteredItems ] = useState([])
 
-    const [adresses] = useState([
-        {
-            name: "มะเดื่อ",
-            lng: 99.0856236,
-            lat: 9.9487238
-        },
-        {
-            name: "หอสมุด",
-            lng: 99.0857319,
-            lat: 9.9493060
-        },
-        {
-            name: "โรงยิม",
-            lng: 99.0862010,
-            lat: 9.9493278
-        },
-        {
-            name: "ตึกสังคม",
-            lng: 99.0855921,
-            lat: 9.9485788
-        },
-        {
-            name: "ตึกคณิต",
-            lng: 99.0855432,
-            lat: 9.9484163
-        },
-        {
-            name: "ตึกคอม",
-            lng: 99.0855629,
-            lat: 9.9480937
-        },
-        {
-            name: "ตึกวิทย์",
-            lng: 99.0854328,
-            lat: 9.9478533
-        },
-    ])
+    async function getAdresses () {
+        const sites = await GetSites()
+        setAdresses(sites);
+    }
 
     useEffect(()=>{
         setFilteredItems([])
+        getAdresses()
     },[])
 
     useEffect(()=>{

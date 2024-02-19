@@ -4,6 +4,10 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
+generator client {
+  provider = "prisma-client-js"
+}
+
 model sites {
   name   String  @db.VarChar
   lat    Float   @db.Real
