@@ -68,7 +68,7 @@ export default function Header(props) {
                             )}
 {/* ///////// */}
                         </div>
-                        <Link href={"/dashboard"} className='text-white block bg-zinc-800 rounded-md p-2 ml-2 outline-none focus:outline-green-500'><User /></Link>
+                        <Link href={"/login"} className='text-white block bg-zinc-800 rounded-md p-2 ml-2 outline-none focus:outline-green-500'><User /></Link>
                     </div>
                 </div>
             </div>
