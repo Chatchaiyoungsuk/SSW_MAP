@@ -17,6 +17,7 @@
     "prisma": "^5.9.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.50.1",
     "three": "^0.160.1"
   },
   "devDependencies": {

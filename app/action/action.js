@@ -14,4 +14,12 @@ async function GetSites(){
     }
 }
 
-export { GetSites }
+async function createUser(formData){
+    const data = {
+        email : formData.get("email"),
+        name : formData.get("name"),
+        password : formData.get("password")
+    }
+}
+
+export { GetSites , createUser }
