@@ -23,7 +23,7 @@ export default function Header(props) {
 
     async function getAdresses () {
         const sites = await GetSites()
-        setAdresses(sites);
+        setAdresses(sites);              
     }
 
     useEffect(()=>{
@@ -48,7 +48,7 @@ export default function Header(props) {
                     <Link href={"/"} >
                         <h1><MapPinned color='#fff' size={"1.5em"} /></h1>
                     </Link>
-{/* ต้องมาแกะโค้ดไอปักษ์เพื่อทำMarker */}
+{/* ///////// */}
                     <div className='flex items-center'>
                         <div className="relative">
                             <input type="text"
