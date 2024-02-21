@@ -1,7 +1,7 @@
 'use server'
 
 import { PrismaClient } from '@prisma/client'
-import { hash } from 'bcryptjs'
+import { hash , compare } from 'bcryptjs'
 
 const prisma = new PrismaClient()
 
@@ -29,7 +29,35 @@ async function createUser(formData){
         console.log(err);
         return {status:"error"}
     }
-    
 }
 
-export { GetSites , createUser }
+async function login(formData){
+    const data = {
+        email : formData.get("email"),
+        password : formData.get("password")
+    }
+
+    const db = await prisma.users.findUnique({where:{
+        email:data.email
+    }})
+
+    try{
+        const checkpass = await compare(data.password,db.password)
+
+        if(checkpass){
+            return {status:"true",data:{
+                name:db.name,
+                email:db.email
+            }}
+        }
+        else{
+            return {status:"false"}
+        }
+    }
+    catch(err){
+        return {status:"false"}
+    }
+
+}
+
+export { GetSites , createUser , login }
