@@ -68,7 +68,7 @@ export default function Home() {
 
           const loader = new GLTFLoader(); // Changed GLTFLoader to THREE.GLTFLoader
           loader.load(
-            "https://sswmap-7eeae.web.app/model.gltf",
+            "./model.gltf",
             (gltf) => {
               this.scene.add(gltf.scene);
             }

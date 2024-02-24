@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import { createUser } from "../action/action"
 import Header from '../components/Header';
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 export default function Page(){
     
@@ -49,9 +48,7 @@ export default function Page(){
                 </div>
                 <button type='submit' className='p-2 inline-block bg-gradient-to-tr from-green-400 to bg-yellow-400 font-bold text-black hover:shadow-lg hover:shadow-green-500/80 rounded-xl'>สมัครสมาชิก</button>
                  <label className='max-w mx-auto w-full margin ' style={{marginLeft : 15 + 'px'}}>มีบัญชีแล้ว?</label>
-                 <Button asChild href={"/login"} variant="link" style={{color : '#3DBD55'}}>
-                 <Link href="/login">LOG IN</Link>
-                </Button>
+                 <Link href="/login" className="hover:underline border-green-400 ml-2 bg-gradient-to-tr from-green-400 to bg-yellow-400 font-bold bg-clip-text text-md text-transparent">เข้าสู่ระบบ</Link>
             </form>
         </div>
         </>
