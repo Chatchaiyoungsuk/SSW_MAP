@@ -1,19 +1,17 @@
 "use client";
 
 import "../map.css";
-
 import React, { useRef, useEffect, useState, useContext } from "react";
 import { PositionContext } from "../Provider/PositionProvider";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import Header from "../components/Header";
 import * as THREE from "three";
-import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader"; // Import OBJLoader from 'three/examples/jsm/loaders/OBJLoader'
-import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader"; // Import MTLLoader from 'three/examples/jsm/loaders/MTLLoader'
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
+import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader";
 
 export default function Home() {
-  const { lng, setLng, lat, setLat, makerLng, setMakerLng, setMakerLat, makerLat } = useContext(PositionContext)
-
+  const { lng, setLng, lat, setLat, makerLng, setMakerLng, setMakerLat, makerLat } = useContext(PositionContext);
   const mapContainer = useRef(null);
   const [zoom] = useState(20);
   const [API_KEY] = useState("0OwvauUkDP7wGwh11RM9");
@@ -21,19 +19,34 @@ export default function Home() {
   useEffect(() => {
     let map = new maplibregl.Map({
       container: mapContainer.current,
-      style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${API_KEY}`,
+      style: `https://api.maptiler.com/maps/basic-v2/style.json?key=${API_KEY}`,
+      id: 'raster',
+      version: 8,
       zoom: zoom,
       center: [lng, lat],
       pitch: 50,
-      antialias: false,
+      bearing: -17.6,
+      antialias: true,
     });
 
+    const initializeGeolocateControl = () => {
+      map.addControl(
+        new maplibregl.GeolocateControl({
+          positionOptions: {
+            enableHighAccuracy: true,
+          },
+          trackUserLocation: true,
+        })
+      );
+    };
+
     map.on("load", () => {
+      initializeGeolocateControl();
+
       // Load OBJ model with texture
       const modelOrigin = [99.0856998, 9.9487982];
       const modelAltitude = 0;
       const modelRotate = [Math.PI / 2, 0, 0];
-
       const modelAsMercatorCoordinate = maplibregl.MercatorCoordinate.fromLngLat(
         modelOrigin,
         modelAltitude
