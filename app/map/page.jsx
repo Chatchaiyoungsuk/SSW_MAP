@@ -13,7 +13,7 @@ import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader";
 export default function Home() {
   const { lng, setLng, lat, setLat, makerLng, setMakerLng, setMakerLat, makerLat } = useContext(PositionContext);
   const mapContainer = useRef(null);
-  const [zoom] = useState(20);
+  const [zoom] = useState(17);
   const [API_KEY] = useState("0OwvauUkDP7wGwh11RM9");
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function Home() {
       version: 8,
       zoom: zoom,
       center: [lng, lat],
-      pitch: 50,
+      pitch: 70,
       bearing: -17.6,
       antialias: true,
     });
@@ -40,8 +40,13 @@ export default function Home() {
       );
     };
 
+    const initializeNavigationControl = () => {
+      map.addControl(new maplibregl.NavigationControl());
+    };
+
     map.on("load", () => {
       initializeGeolocateControl();
+      initializeNavigationControl();
 
       // Load OBJ model with texture
       const modelOrigin = [99.0856998, 9.9487982];
