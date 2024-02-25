@@ -11,7 +11,7 @@ function PositionProvider({children}) {
     const [lat, setLat] = useState(9.9485982);
     const [makerLng, setMakerLng] = useState(0);
     const [makerLat, setMakerLat] = useState(0);
-    const [ isActiveSearchModal , setSearchModal ] = useState(true)
+    const [ isActiveSearchModal , setSearchModal ] = useState(false)
 
     function setPosition(lng,lat) {
         setLng(lng);

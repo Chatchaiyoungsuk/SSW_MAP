@@ -39,7 +39,9 @@ export default function SearchByRoom(){
     }
 
     async function BTNHanddle(siteName){
+        console.log(siteName);
         const data = await GetSiteData(siteName)
+        console.log(data);
         setPosition(data.lng,data.lat)
     }
 
