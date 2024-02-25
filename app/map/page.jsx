@@ -2,7 +2,7 @@
 
 import "../map.css";
 
-import React, { useRef, useEffect, useState , useContext } from "react"
+import React, { useRef, useEffect, useState, useContext } from "react";
 import { PositionContext } from "../Provider/PositionProvider";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -12,8 +12,7 @@ import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader"; // Import OBJL
 import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader"; // Import MTLLoader from 'three/examples/jsm/loaders/MTLLoader'
 
 export default function Home() {
-
-  const { lng , setLng , lat , setLat , makerLng , setMakerLng , setMakerLat , makerLat } = useContext(PositionContext)
+  const { lng, setLng, lat, setLat, makerLng, setMakerLng, setMakerLat, makerLat } = useContext(PositionContext)
 
   const mapContainer = useRef(null);
   const [zoom] = useState(20);
@@ -139,7 +138,6 @@ export default function Home() {
       map.loadImage(
         "https://cdn.discordapp.com/attachments/1087745142951256134/1200722420571578368/1.png?ex=65ec20e5&is=65d9abe5&hm=6ece3197a77950df34e175cf606c2385266e9871d951ab6ee002e7ab81e96a7f&",
         (error, image) => {
-          //handle err
           if (error) {
             console.log(error);
           }
