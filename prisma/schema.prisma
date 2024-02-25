@@ -21,3 +21,8 @@ model users {
   name     String @db.VarChar
   password String @db.VarChar
 }
+
+model rooms {
+  roomnumber String @id(map: "rooms_pk") @db.VarChar
+  site       String @db.VarChar
+}

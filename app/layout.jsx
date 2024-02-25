@@ -1,6 +1,7 @@
-
 import localFont from 'next/font/local'
 import "./globals.css";
+import Nextload from './components/NextLoad';
+import PositionProvider from './Provider/PositionProvider';
 
 const lineSeedSansTH = localFont({
   src: [
@@ -23,10 +24,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${lineSeedSansTH.variable} font-sans bg-zinc-950 text-white`}>
-        {children}
-      </body>
-    </html>
+    <PositionContext>
+      <html lang="en">
+        <body className={`${lineSeedSansTH.variable} font-sans bg-zinc-950 text-white`}>
+        <Nextload />
+          {children}
+        </body>
+      </html>
+    </PositionContext>
   );
 }

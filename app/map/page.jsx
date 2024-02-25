@@ -12,13 +12,8 @@ import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader"; // Import MTLL
 
 export default function Home() {
   const mapContainer = useRef(null);
-  const [lng, setLng] = useState(99.0852798);
-  const [lat, setLat] = useState(9.9485982);
   const [zoom] = useState(20);
   const [API_KEY] = useState("0OwvauUkDP7wGwh11RM9");
-
-  const [makerLng, setMakerLng] = useState(0);
-  const [makerLat, setMakerLat] = useState(0);
 
   useEffect(() => {
     let map = new maplibregl.Map({
