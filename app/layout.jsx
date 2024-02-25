@@ -24,13 +24,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <PositionContext>
+    <PositionProvider>
       <html lang="en">
         <body className={`${lineSeedSansTH.variable} font-sans bg-zinc-950 text-white`}>
         <Nextload />
           {children}
         </body>
       </html>
-    </PositionContext>
+    </PositionProvider>
   );
 }

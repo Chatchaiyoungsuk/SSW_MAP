@@ -15,6 +15,19 @@ async function GetSites(){
     }
 }
 
+async function GetRoom(num){
+    console.log(num);
+    try{
+        const roomData = await prisma.rooms.findUnique({where:{
+            roomnumber:num
+        }})
+        console.log(roomData);
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
 async function createUser(formData){
     const data = {
         email : formData.get("email"),
@@ -60,4 +73,4 @@ async function login(formData){
 
 }
 
-export { GetSites , createUser , login }
+export { GetSites , createUser , login , GetRoom }

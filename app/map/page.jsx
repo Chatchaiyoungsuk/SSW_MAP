@@ -2,7 +2,8 @@
 
 import "../map.css";
 
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState , useContext } from "react"
+import { PositionContext } from "../Provider/PositionProvider";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import Header from "../components/Header";
@@ -11,6 +12,9 @@ import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader"; // Import OBJL
 import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader"; // Import MTLLoader from 'three/examples/jsm/loaders/MTLLoader'
 
 export default function Home() {
+
+  const { lng , setLng , lat , setLat , makerLng , setMakerLng , setMakerLat , makerLat } = useContext(PositionContext)
+
   const mapContainer = useRef(null);
   const [zoom] = useState(20);
   const [API_KEY] = useState("0OwvauUkDP7wGwh11RM9");
