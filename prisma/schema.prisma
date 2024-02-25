@@ -9,11 +9,10 @@ datasource db {
 }
 
 model sites {
-  name   String  @db.VarChar
+  name   String  @id(map: "sites_pk") @db.VarChar
   lat    Float   @db.Real
   lng    Float   @db.Real
   detail String? @db.VarChar
-  id     Int     @id(map: "sites_pk") @default(autoincrement())
 }
 
 model users {

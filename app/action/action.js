@@ -5,6 +5,19 @@ import { hash , compare } from 'bcryptjs'
 
 const prisma = new PrismaClient()
 
+async function GetSiteData(siteName){
+    console.log(siteName);
+    try{
+        const siteData = await prisma.sites.findUnique({where:{
+            name:siteName
+        }})
+        return siteData
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
 async function GetSites(){
     try{
         const sites = await prisma.sites.findMany()
@@ -16,12 +29,11 @@ async function GetSites(){
 }
 
 async function GetRoom(num){
-    console.log(num);
     try{
         const roomData = await prisma.rooms.findUnique({where:{
             roomnumber:num
         }})
-        console.log(roomData);
+        return roomData
     }
     catch(err){
         console.log(err);
@@ -73,4 +85,4 @@ async function login(formData){
 
 }
 
-export { GetSites , createUser , login , GetRoom }
+export { GetSites , createUser , login , GetRoom , GetSiteData }
