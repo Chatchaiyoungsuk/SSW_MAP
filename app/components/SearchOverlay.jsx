@@ -23,6 +23,7 @@ export default function SearchOverlay(){
                     <button onClick={()=>{setSearchModal(false)}}><X /></button>
                 </div>
                 <hr className="border border-zinc-900 my-2" />
+                <div style={{ fontSize: '14px' }} className="mb-2 text-red-400">หมายเหตุ กรุณารอสักครู่หากท่านค้นหาด้วยชื่อห้องเนื่องจากข้อมูลมีจำนวนมาก ทำให้การโหลดล่าช้า และหากไม่พบข้อมูล กรุณาค้นหาด้วยชื่อห้องเต็ม เช่น กลุ่มสาระการเรียนรู้ภาษาไทย</div>
                 <div className="flex mb-2">
                     <select value={searchBy} onChange={onSearchChange} className="mb-2 bg-zinc-900 outline-none w-full rounded-xl p-2 focus:outline focus:outline-green-400">
                         <option value="building">หาโดยชื่ออาคาร</option>
@@ -40,7 +41,6 @@ export default function SearchOverlay(){
                 </div>
                 )}
             </div>
-            <div style={{ marginLeft: '15px', fontSize: '10px' }}>หมายเหตุ กรุณารอสักครู่หากท่านค้นหาด้วยชื่อห้อง <br />เนื่องจากข้อมูลมีจำนวนมาก ทำให้การโหลดล่าช้า <br />และหากไม่พบข้อมูล กรุณาค้นหาด้วยชื่อห้องเต็ม <br />เช่น กลุ่มสาระการเรียนรู้ภาษาไทย</div>
         </div>
     )
 }
