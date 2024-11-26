@@ -154,7 +154,7 @@ export default function Home() {
 
       //SSW Logo
       map.loadImage(
-        "https://cdn.discordapp.com/attachments/1087745142951256134/1200722420571578368/1.png?ex=65ec20e5&is=65d9abe5&hm=6ece3197a77950df34e175cf606c2385266e9871d951ab6ee002e7ab81e96a7f&",
+        // "https://cdn.discordapp.com/attachments/1087745142951256134/1200722420571578368/1.png?ex=65ec20e5&is=65d9abe5&hm=6ece3197a77950df34e175cf606c2385266e9871d951ab6ee002e7ab81e96a7f&",
         (error, image) => {
           if (error) {
             console.log(error);

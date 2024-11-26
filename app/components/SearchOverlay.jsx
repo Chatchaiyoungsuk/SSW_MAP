@@ -17,7 +17,7 @@ export default function SearchOverlay(){
 
     return(
         <div className="w-screen h-screen bg-zinc-900/80 backdrop-blur-xl fixed top-0 z-50 flex justify-center items-center p-4">
-            <div className='max-w-[350px] p-4 w-full bg-zinc-950 max-h-80vh rounded-xl'>
+            <div className='max-w-[350px] p-4 w-full bg-zinc-550 max-h-80vh rounded-xl'>
                 <div className="flex justify-between items-center mb-2">
                     <div className="font-bold">ค้นหา</div>
                     <button onClick={()=>{setSearchModal(false)}}><X /></button>
